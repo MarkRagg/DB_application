@@ -22,11 +22,25 @@ namespace DB_application
         {
             using (AnimaliDataContext ctx = new AnimaliDataContext())
             {
-                var gab1 = new Gabbia();
-                gab1.Lunghezza = "15";
-                ctx.Gabbias.InsertOnSubmit(gab1);
+                var medicalRecords = new CartellaClinica();
+                var codMedicalRecord = ctx.CartellaClinicas.Max(x => x.CodiceCartella) + 1;
+                var codAnimal = ctx.Altros.Max(x => x.CodiceAnimale) + 1;
+                var animal = new Altro();
+
+                medicalRecords.CodiceCartella = codMedicalRecord;
+
+                ctx.CartellaClinicas.InsertOnSubmit(medicalRecords);
+                
+                animal.TipoAnimale = tipoAnimaleTxt.Text;
+                animal.CodiceGabbia = Convert.ToInt32(codGabbia.Text);
+                animal.CodiceAnimale = codAnimal;
+                animal.CodiceCartella = codMedicalRecord;
+
+                ctx.Altros.InsertOnSubmit(animal);
                 ctx.SubmitChanges();
             }
+
+            MessageBox.Show("Inserimento completato");
         }
     }
 }
