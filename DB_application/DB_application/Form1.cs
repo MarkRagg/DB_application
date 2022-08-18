@@ -52,5 +52,19 @@ namespace DB_application
                 list.ForEach(x => listGabbia.Items.Add(x));
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                //Bisogna dividere l'operazione in: adozione cane e adozione animale
+                var adoptionDate = dateTimePicker1.Value;
+                //var adoption = ;
+                //ctx.Altros.InsertOnSubmit();
+                ctx.SubmitChanges();
+            }
+
+            MessageBox.Show("Inserimento completato");
+        }
     }
 }
