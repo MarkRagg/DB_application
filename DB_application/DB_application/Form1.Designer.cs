@@ -34,9 +34,9 @@ namespace DB_application
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.codGabbia = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listGabbia = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +79,7 @@ namespace DB_application
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.codGabbia);
+            this.tabPage2.Controls.Add(this.listGabbia);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.tipoAnimaleTxt);
             this.tabPage2.Controls.Add(this.label1);
@@ -92,6 +92,15 @@ namespace DB_application
             this.tabPage2.Text = "Inserimento altri animali";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(101, 180);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Gabbia";
+            // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -102,21 +111,13 @@ namespace DB_application
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // listGabbia
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(101, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Gabbia";
-            // 
-            // codGabbia
-            // 
-            this.codGabbia.Location = new System.Drawing.Point(300, 180);
-            this.codGabbia.Name = "codGabbia";
-            this.codGabbia.Size = new System.Drawing.Size(221, 22);
-            this.codGabbia.TabIndex = 5;
+            this.listGabbia.FormattingEnabled = true;
+            this.listGabbia.Location = new System.Drawing.Point(300, 177);
+            this.listGabbia.Name = "listGabbia";
+            this.listGabbia.Size = new System.Drawing.Size(221, 24);
+            this.listGabbia.TabIndex = 5;
             // 
             // Form1
             // 
@@ -142,7 +143,7 @@ namespace DB_application
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox codGabbia;
+        private System.Windows.Forms.ComboBox listGabbia;
     }
 }
 

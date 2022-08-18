@@ -16,6 +16,7 @@ namespace DB_application
         public Form1()
         {
             InitializeComponent();
+            addAllGabbias();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace DB_application
                 ctx.CartellaClinicas.InsertOnSubmit(medicalRecords);
                 
                 animal.TipoAnimale = tipoAnimaleTxt.Text;
-                animal.CodiceGabbia = Convert.ToInt32(codGabbia.Text);
+                animal.CodiceGabbia = Convert.ToInt32(listGabbia.SelectedItem);
                 animal.CodiceAnimale = codAnimal;
                 animal.CodiceCartella = codMedicalRecord;
 
@@ -41,6 +42,15 @@ namespace DB_application
             }
 
             MessageBox.Show("Inserimento completato");
+        }
+
+        private void addAllGabbias()
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var list = ctx.Gabbias.Select(x => x.CodiceGabbia).ToList();
+                list.ForEach(x => listGabbia.Items.Add(x));
+            }
         }
     }
 }
