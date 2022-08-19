@@ -61,7 +61,7 @@ namespace DB_application
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.descrizioneSintomi = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -296,7 +296,7 @@ namespace DB_application
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.descrizioneSintomi);
             this.tabPage4.Controls.Add(this.listCodiceFiscale);
             this.tabPage4.Controls.Add(this.listCartelleCliniche_tab4);
             this.tabPage4.Controls.Add(this.TimePicker_tab4);
@@ -380,13 +380,14 @@ namespace DB_application
             this.button4.TabIndex = 0;
             this.button4.Text = "Inserimento";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox1
+            // descrizioneSintomi
             // 
-            this.textBox1.Location = new System.Drawing.Point(374, 153);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 22);
-            this.textBox1.TabIndex = 8;
+            this.descrizioneSintomi.Location = new System.Drawing.Point(374, 153);
+            this.descrizioneSintomi.Name = "descrizioneSintomi";
+            this.descrizioneSintomi.Size = new System.Drawing.Size(243, 22);
+            this.descrizioneSintomi.TabIndex = 8;
             // 
             // Form1
             // 
@@ -443,7 +444,7 @@ namespace DB_application
         private System.Windows.Forms.ComboBox listCodiceFiscale;
         private System.Windows.Forms.ComboBox listCartelleCliniche_tab4;
         private System.Windows.Forms.DateTimePicker TimePicker_tab4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox descrizioneSintomi;
     }
 }
 

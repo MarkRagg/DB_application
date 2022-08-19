@@ -18,6 +18,7 @@ namespace DB_application
             InitializeComponent();
             addAllGabbias();
             addAllItemsTab3();
+            addAllItemsTab4();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,6 +97,48 @@ namespace DB_application
 
                 listVaccini.SelectedItem = itemsVaccini.First();
                 listCartelleCliniche.SelectedItem = itemsCodCartelle.First();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+
+                var codVisita = ctx.VisitaMedicas.Count() == 0 ? 
+                    0 : 
+                    ctx.VisitaMedicas.Max(x => x.CodiceVisita) + 1;
+                var visitaMedica = new VisitaMedica();
+                var veterinario = ctx.Personas.Where(x => x.Veterinario.Equals(listCodiceFiscale.SelectedItem)).ToList().First();
+
+                veterinario.NumeroVisite += 1;
+                visitaMedica.CodiceCartella = Convert.ToInt32(listCartelleCliniche_tab4.SelectedItem);
+                visitaMedica.CodiceFiscale = veterinario.CodiceFiscale;
+                visitaMedica.DescrizioneSintomi = descrizioneSintomi.Text;
+                visitaMedica.DataVisita = TimePicker_tab4.Value;
+                visitaMedica.CodiceVisita = codVisita;
+
+                ctx.VisitaMedicas.InsertOnSubmit(visitaMedica);
+                ctx.Personas.GetModifiedMembers(veterinario);
+                ctx.SubmitChanges();
+            }
+
+            MessageBox.Show("Inserimento completato");
+        }
+
+        private void addAllItemsTab4()
+        {
+            {
+                using (AnimaliDataContext ctx = new AnimaliDataContext())
+                {
+                    var itemsCartelle = ctx.CartellaClinicas.Select(x => x.CodiceCartella).ToList();
+                    var itemsCodiciFiscali = ctx.Personas.Where(x => !x.Veterinario.Equals("")).ToList();
+                    itemsCartelle.ForEach(x => listCartelleCliniche_tab4.Items.Add(x));
+                    itemsCodiciFiscali.ForEach(x => listCodiceFiscale.Items.Add(x.Veterinario));
+
+                    listCartelleCliniche_tab4.SelectedItem = itemsCartelle.First();
+                    listCodiceFiscale.SelectedItem = itemsCodiciFiscali.First();
+                }
             }
         }
     }
