@@ -51,6 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="animaliDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>animaliDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataContext1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,6 +81,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="animaliDataSet.xsc">
+      <DependentUpon>animaliDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="animaliDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>animaliDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="animaliDataSet.xss">
+      <DependentUpon>animaliDataSet.xsd</DependentUpon>
+    </None>
     <None Include="DataContext1.Diagram1.view">
       <DependentUpon>DataContext1.lqml</DependentUpon>
     </None>

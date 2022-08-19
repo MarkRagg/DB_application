@@ -41,6 +41,7 @@ namespace DB_application
 
                 ctx.Altros.InsertOnSubmit(animal);
                 ctx.SubmitChanges();
+                FillAnimal();
             }
 
             MessageBox.Show("Inserimento completato");
@@ -140,6 +141,16 @@ namespace DB_application
                     listCodiceFiscale.SelectedItem = itemsCodiciFiscali.First();
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {           
+            FillAnimal();
+        }
+
+        private void FillAnimal()
+        {
+            this.altroTableAdapter.Fill(this.animaliDataSet.altro);
         }
     }
 }

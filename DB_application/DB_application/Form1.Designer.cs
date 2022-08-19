@@ -29,6 +29,7 @@ namespace DB_application
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.tipoAnimaleTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@ namespace DB_application
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.descrizioneSintomi = new System.Windows.Forms.TextBox();
             this.listCodiceFiscale = new System.Windows.Forms.ComboBox();
             this.listCartelleCliniche_tab4 = new System.Windows.Forms.ComboBox();
             this.TimePicker_tab4 = new System.Windows.Forms.DateTimePicker();
@@ -61,12 +63,24 @@ namespace DB_application
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.descrizioneSintomi = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.animalGabbiaView = new System.Windows.Forms.DataGridView();
+            this.codiceanimaleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codicecartellaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoanimaleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codicegabbiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.altroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.animaliDataSet = new DB_application.animaliDataSet();
+            this.altroTableAdapter = new DB_application.animaliDataSetTableAdapters.altroTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.animalGabbiaView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.altroBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animaliDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -101,6 +115,7 @@ namespace DB_application
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(-1, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -313,6 +328,13 @@ namespace DB_application
             this.tabPage4.Text = "Inserimento visite";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // descrizioneSintomi
+            // 
+            this.descrizioneSintomi.Location = new System.Drawing.Point(374, 153);
+            this.descrizioneSintomi.Name = "descrizioneSintomi";
+            this.descrizioneSintomi.Size = new System.Drawing.Size(243, 22);
+            this.descrizioneSintomi.TabIndex = 8;
+            // 
             // listCodiceFiscale
             // 
             this.listCodiceFiscale.FormattingEnabled = true;
@@ -382,12 +404,79 @@ namespace DB_application
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // descrizioneSintomi
+            // tabPage5
             // 
-            this.descrizioneSintomi.Location = new System.Drawing.Point(374, 153);
-            this.descrizioneSintomi.Name = "descrizioneSintomi";
-            this.descrizioneSintomi.Size = new System.Drawing.Size(243, 22);
-            this.descrizioneSintomi.TabIndex = 8;
+            this.tabPage5.Controls.Add(this.animalGabbiaView);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(873, 486);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // animalGabbiaView
+            // 
+            this.animalGabbiaView.AutoGenerateColumns = false;
+            this.animalGabbiaView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.animalGabbiaView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codiceanimaleDataGridViewTextBoxColumn,
+            this.codicecartellaDataGridViewTextBoxColumn,
+            this.tipoanimaleDataGridViewTextBoxColumn,
+            this.codicegabbiaDataGridViewTextBoxColumn});
+            this.animalGabbiaView.DataSource = this.altroBindingSource;
+            this.animalGabbiaView.Location = new System.Drawing.Point(0, 0);
+            this.animalGabbiaView.Name = "animalGabbiaView";
+            this.animalGabbiaView.RowHeadersWidth = 51;
+            this.animalGabbiaView.RowTemplate.Height = 24;
+            this.animalGabbiaView.Size = new System.Drawing.Size(873, 150);
+            this.animalGabbiaView.TabIndex = 0;
+            // 
+            // codiceanimaleDataGridViewTextBoxColumn
+            // 
+            this.codiceanimaleDataGridViewTextBoxColumn.DataPropertyName = "Codice_animale";
+            this.codiceanimaleDataGridViewTextBoxColumn.HeaderText = "Codice_animale";
+            this.codiceanimaleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codiceanimaleDataGridViewTextBoxColumn.Name = "codiceanimaleDataGridViewTextBoxColumn";
+            this.codiceanimaleDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codicecartellaDataGridViewTextBoxColumn
+            // 
+            this.codicecartellaDataGridViewTextBoxColumn.DataPropertyName = "Codice_cartella";
+            this.codicecartellaDataGridViewTextBoxColumn.HeaderText = "Codice_cartella";
+            this.codicecartellaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codicecartellaDataGridViewTextBoxColumn.Name = "codicecartellaDataGridViewTextBoxColumn";
+            this.codicecartellaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tipoanimaleDataGridViewTextBoxColumn
+            // 
+            this.tipoanimaleDataGridViewTextBoxColumn.DataPropertyName = "Tipo_animale";
+            this.tipoanimaleDataGridViewTextBoxColumn.HeaderText = "Tipo_animale";
+            this.tipoanimaleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tipoanimaleDataGridViewTextBoxColumn.Name = "tipoanimaleDataGridViewTextBoxColumn";
+            this.tipoanimaleDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codicegabbiaDataGridViewTextBoxColumn
+            // 
+            this.codicegabbiaDataGridViewTextBoxColumn.DataPropertyName = "codice_gabbia";
+            this.codicegabbiaDataGridViewTextBoxColumn.HeaderText = "codice_gabbia";
+            this.codicegabbiaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codicegabbiaDataGridViewTextBoxColumn.Name = "codicegabbiaDataGridViewTextBoxColumn";
+            this.codicegabbiaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // altroBindingSource
+            // 
+            this.altroBindingSource.DataMember = "altro";
+            this.altroBindingSource.DataSource = this.animaliDataSet;
+            // 
+            // animaliDataSet
+            // 
+            this.animaliDataSet.DataSetName = "animaliDataSet";
+            this.animaliDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // altroTableAdapter
+            // 
+            this.altroTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -397,6 +486,7 @@ namespace DB_application
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -406,6 +496,10 @@ namespace DB_application
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.animalGabbiaView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.altroBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animaliDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -445,6 +539,15 @@ namespace DB_application
         private System.Windows.Forms.ComboBox listCartelleCliniche_tab4;
         private System.Windows.Forms.DateTimePicker TimePicker_tab4;
         private System.Windows.Forms.TextBox descrizioneSintomi;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataGridView animalGabbiaView;
+        private animaliDataSet animaliDataSet;
+        private System.Windows.Forms.BindingSource altroBindingSource;
+        private animaliDataSetTableAdapters.altroTableAdapter altroTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codiceanimaleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codicecartellaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoanimaleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codicegabbiaDataGridViewTextBoxColumn;
     }
 }
 
