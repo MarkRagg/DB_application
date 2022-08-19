@@ -17,6 +17,7 @@ namespace DB_application
         {
             InitializeComponent();
             addAllGabbias();
+            addAllItemsTab3();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,6 +66,37 @@ namespace DB_application
             }
 
             MessageBox.Show("Inserimento completato");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var execution = new Esecuzione();
+                var codVaccino = ctx.Vaccinos.Where(x => x.Descrizione.Equals(listVaccini.SelectedItem));
+                execution.CodiceCartella = Convert.ToInt32(listCartelleCliniche.SelectedItem);
+                execution.CodiceVaccino = codVaccino.First().CodiceVaccino;
+                execution.DataSomministrazione = dateTimePicker2.Value;
+
+                ctx.Esecuziones.InsertOnSubmit(execution);
+                ctx.SubmitChanges();
+            }
+
+            MessageBox.Show("Inserimento completato");
+        }
+
+        private void addAllItemsTab3()
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var itemsVaccini = ctx.Vaccinos.Select(x => x.Descrizione).ToList();
+                var itemsCodCartelle = ctx.CartellaClinicas.Select(x => x.CodiceCartella).ToList();
+                itemsVaccini.ForEach(x => listVaccini.Items.Add(x));
+                itemsCodCartelle.ForEach(x => listCartelleCliniche.Items.Add(x));
+
+                listVaccini.SelectedItem = itemsVaccini.First();
+                listCartelleCliniche.SelectedItem = itemsCodCartelle.First();
+            }
         }
     }
 }
