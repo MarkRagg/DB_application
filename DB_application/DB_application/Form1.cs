@@ -26,8 +26,10 @@ namespace DB_application
             addAllItemsTab4();
             addAllItemsTabView1();
             addAllItemsTabView2();
+            addAllItemsViewTab3();
             fillAnimal();
             fillTurni();
+            fillCodiciCartelle();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,20 +65,6 @@ namespace DB_application
                 var list = ctx.Gabbias.Select(x => x.CodiceGabbia).ToList();
                 list.ForEach(x => listGabbia.Items.Add(x));
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            using (AnimaliDataContext ctx = new AnimaliDataContext())
-            {
-                //Bisogna dividere l'operazione in: adozione cane e adozione animale
-                var adoptionDate = dateTimePicker1.Value;
-                //var adoption = ;
-                //ctx.Altros.InsertOnSubmit();
-                ctx.SubmitChanges();
-            }
-
-            MessageBox.Show("Inserimento completato");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -246,6 +234,46 @@ namespace DB_application
                                 anno = t.Anno
                             };
                 ShowResultsOnGrid(query, turniView);
+            }
+        }
+
+        private void fillCodiciCartelle()
+        {
+            showCartelleCliniche(Convert.ToInt32(listCartelleClinicheViewTab3.SelectedItem));
+            intolleranzeView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            intolleranzeView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void addAllItemsViewTab3()
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var itemsCodiciCartelle = ctx.CartellaClinicas.Select(x => x.CodiceCartella).ToList();
+                itemsCodiciCartelle.ForEach(x => listCartelleClinicheViewTab3.Items.Add(x));
+                listCartelleClinicheViewTab3.SelectedItem = itemsCodiciCartelle.First();
+            }
+        }
+
+        private void listCartelleClinicheViewTab3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showCartelleCliniche(Convert.ToInt32(listCartelleClinicheViewTab3.SelectedItem));
+        }
+
+        private void showCartelleCliniche(int codiceCartellaView)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var query = from i in ctx.Intolleranzas
+                            join c in ctx.CartellaClinicas on i.CodiceCartella equals c.CodiceCartella
+                            join m in ctx.Medicinales on i.CodiceMedicinale equals m.CodiceMedicinale
+                            where c.CodiceCartella == codiceCartellaView
+                            select new
+                            {
+                                codiceCartella = c.CodiceCartella,
+                                sintomiIntolleranza = i.DescrizioneSintomi,
+                                codiceMedicinale = m.CodiceMedicinale
+                            };
+                ShowResultsOnGrid(query, intolleranzeView);
             }
         }
     }
