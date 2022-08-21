@@ -16,9 +16,18 @@ namespace DB_application
         public Form1()
         {
             InitializeComponent();
+            loadOrRefresh();
+        }
+
+        private void loadOrRefresh()
+        {
             addAllGabbias();
             addAllItemsTab3();
             addAllItemsTab4();
+            addAllItemsTabView1();
+            addAllItemsTabView2();
+            fillAnimal();
+            fillTurni();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,7 +50,7 @@ namespace DB_application
 
                 ctx.Altros.InsertOnSubmit(animal);
                 ctx.SubmitChanges();
-                FillAnimal();
+                loadOrRefresh();
             }
 
             MessageBox.Show("Inserimento completato");
@@ -82,6 +91,7 @@ namespace DB_application
 
                 ctx.Esecuziones.InsertOnSubmit(execution);
                 ctx.SubmitChanges();
+                loadOrRefresh();
             }
 
             MessageBox.Show("Inserimento completato");
@@ -122,6 +132,7 @@ namespace DB_application
                 ctx.VisitaMedicas.InsertOnSubmit(visitaMedica);
                 ctx.Personas.GetModifiedMembers(veterinario);
                 ctx.SubmitChanges();
+                loadOrRefresh();
             }
 
             MessageBox.Show("Inserimento completato");
@@ -145,12 +156,97 @@ namespace DB_application
 
         private void Form1_Load(object sender, EventArgs e)
         {           
-            FillAnimal();
+            fillAnimal();
+            fillTurni();
         }
 
-        private void FillAnimal()
+        private void fillAnimal()
         {
-            this.altroTableAdapter.Fill(this.animaliDataSet.altro);
+            showTelephoneNumberOnGrid(1);
+            animaliGabbiaView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            animaliGabbiaView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void showTelephoneNumberOnGrid(int codiceGabbia)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var numeroAnimaliInGabbia = ctx.Altros.Where(x => x.CodiceGabbia == codiceGabbia).Count();
+                var query = ctx.Gabbias.Where(x => x.CodiceGabbia == codiceGabbia)
+                                       .Select(g => new
+                                            {
+                                            codiceGabbia = g.CodiceGabbia,
+                                            lunghezza = g.Lunghezza,
+                                            larghezza = g.Larghezza,
+                                            numeroAnimali = numeroAnimaliInGabbia
+                                       });
+                ShowResultsOnGrid(query, animaliGabbiaView);
+            }
+        }
+
+        private void ShowResultsOnGrid(IQueryable queryResult, DataGridView dataGrid)
+        {
+            try
+            {
+                dataGrid.DataSource = queryResult;
+            }
+            catch (InvalidOperationException)
+            {
+            }
+        }
+
+        private void addAllItemsTabView1()
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var itemsCodiceGabbia = ctx.Gabbias.Select(x => x.CodiceGabbia).ToList();
+                itemsCodiceGabbia.ForEach(x => listCodiceGabbia.Items.Add(x));
+                listCodiceGabbia.SelectedItem = itemsCodiceGabbia.First();
+            }
+        }
+
+        private void listCodiceGabbia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showTelephoneNumberOnGrid(Convert.ToInt32(listCodiceGabbia.SelectedItem));
+        }
+
+        private void addAllItemsTabView2()
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var itemsCodiciFiscali = ctx.Personas.Where(x => x.Dipendente != "")
+                                                     .Select(x => x.CodiceFiscale).ToList();
+                itemsCodiciFiscali.ForEach(x => listCodiciFiscaliDip.Items.Add(x));
+                listCodiciFiscaliDip.SelectedItem = itemsCodiciFiscali.First();
+            }
+        }
+
+        private void fillTurni()
+        {
+            showTurniDiLavoroOnGrid(Convert.ToString(listCodiciFiscaliDip.SelectedItem));
+            turniView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            turniView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void showTurniDiLavoroOnGrid(string codiceFiscale)
+        {
+            using (AnimaliDataContext ctx = new AnimaliDataContext())
+            {
+                var query = from p in ctx.Personas
+                            join t in ctx.TurnoDiLavoros on p.CodiceFiscale equals t.CodiceFiscale
+                            where p.Dipendente != ""
+                            select new
+                            {
+                                nome = p.Nome,
+                                cognome = p.Cognome,
+                                telefono = p.Telefono,
+                                orarioInizio = t.OraInizio.Hour,
+                                orarioFine = t.OraFine.Hour,
+                                mese = t.Mese,
+                                anno = t.Anno
+                            };
+                ShowResultsOnGrid(query, turniView);
+            }
         }
     }
 }
