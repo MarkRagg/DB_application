@@ -96,7 +96,7 @@ namespace DB_application
             // 
             // tipoAnimaleTxt
             // 
-            this.tipoAnimaleTxt.Location = new System.Drawing.Point(300, 110);
+            this.tipoAnimaleTxt.Location = new System.Drawing.Point(375, 95);
             this.tipoAnimaleTxt.Name = "tipoAnimaleTxt";
             this.tipoAnimaleTxt.Size = new System.Drawing.Size(221, 22);
             this.tipoAnimaleTxt.TabIndex = 1;
@@ -104,7 +104,7 @@ namespace DB_application
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(101, 113);
+            this.label1.Location = new System.Drawing.Point(176, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 3;
@@ -142,7 +142,7 @@ namespace DB_application
             // listGabbia
             // 
             this.listGabbia.FormattingEnabled = true;
-            this.listGabbia.Location = new System.Drawing.Point(300, 177);
+            this.listGabbia.Location = new System.Drawing.Point(375, 162);
             this.listGabbia.Name = "listGabbia";
             this.listGabbia.Size = new System.Drawing.Size(221, 24);
             this.listGabbia.TabIndex = 5;
@@ -150,7 +150,7 @@ namespace DB_application
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(101, 180);
+            this.label2.Location = new System.Drawing.Point(176, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 4;
@@ -175,7 +175,7 @@ namespace DB_application
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(357, 303);
+            this.dateTimePicker2.Location = new System.Drawing.Point(354, 257);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(240, 22);
             this.dateTimePicker2.TabIndex = 6;
@@ -183,7 +183,7 @@ namespace DB_application
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(162, 303);
+            this.label9.Location = new System.Drawing.Point(159, 257);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(151, 17);
             this.label9.TabIndex = 5;
@@ -192,7 +192,7 @@ namespace DB_application
             // listCartelleCliniche
             // 
             this.listCartelleCliniche.FormattingEnabled = true;
-            this.listCartelleCliniche.Location = new System.Drawing.Point(357, 216);
+            this.listCartelleCliniche.Location = new System.Drawing.Point(354, 170);
             this.listCartelleCliniche.Name = "listCartelleCliniche";
             this.listCartelleCliniche.Size = new System.Drawing.Size(240, 24);
             this.listCartelleCliniche.TabIndex = 4;
@@ -200,7 +200,7 @@ namespace DB_application
             // listVaccini
             // 
             this.listVaccini.FormattingEnabled = true;
-            this.listVaccini.Location = new System.Drawing.Point(357, 138);
+            this.listVaccini.Location = new System.Drawing.Point(354, 92);
             this.listVaccini.Name = "listVaccini";
             this.listVaccini.Size = new System.Drawing.Size(240, 24);
             this.listVaccini.TabIndex = 3;
@@ -208,7 +208,7 @@ namespace DB_application
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(159, 223);
+            this.label8.Location = new System.Drawing.Point(156, 177);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 17);
             this.label8.TabIndex = 2;
@@ -217,7 +217,7 @@ namespace DB_application
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 141);
+            this.label7.Location = new System.Drawing.Point(156, 95);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 17);
             this.label7.TabIndex = 1;
@@ -344,7 +344,7 @@ namespace DB_application
             // listCodiceGabbia
             // 
             this.listCodiceGabbia.FormattingEnabled = true;
-            this.listCodiceGabbia.Location = new System.Drawing.Point(373, 268);
+            this.listCodiceGabbia.Location = new System.Drawing.Point(478, 266);
             this.listCodiceGabbia.Name = "listCodiceGabbia";
             this.listCodiceGabbia.Size = new System.Drawing.Size(88, 24);
             this.listCodiceGabbia.TabIndex = 2;
@@ -353,7 +353,7 @@ namespace DB_application
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(185, 271);
+            this.label14.Location = new System.Drawing.Point(290, 269);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(98, 17);
             this.label14.TabIndex = 1;
@@ -425,7 +425,7 @@ namespace DB_application
             // listCartelleClinicheViewTab3
             // 
             this.listCartelleClinicheViewTab3.FormattingEnabled = true;
-            this.listCartelleClinicheViewTab3.Location = new System.Drawing.Point(344, 336);
+            this.listCartelleClinicheViewTab3.Location = new System.Drawing.Point(413, 330);
             this.listCartelleClinicheViewTab3.Name = "listCartelleClinicheViewTab3";
             this.listCartelleClinicheViewTab3.Size = new System.Drawing.Size(209, 24);
             this.listCartelleClinicheViewTab3.TabIndex = 2;
@@ -434,7 +434,7 @@ namespace DB_application
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(150, 339);
+            this.label3.Location = new System.Drawing.Point(219, 333);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 1;
@@ -471,7 +471,7 @@ namespace DB_application
             this.ClientSize = new System.Drawing.Size(879, 515);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Animali per il mondo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
